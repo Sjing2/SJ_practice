@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
-os.chdir("C:\\Users\\sojeo\\OneDrive\\바탕 화면\\SJ_practice")
+os.chdir("C:\\Users\\sojeo\\SJ_practice")
 
 # Document Classifier
 class NaiveBayesClassifier() :
@@ -88,6 +88,6 @@ if __name__ == "__main__" :
     X_test, Y_test = df_test['mail'].tolist(), df_test['label'].tolist()
 
     nbc = NaiveBayesClassifier()
-    nbc.train(X_train, Y_train)
+    # nbc.train(X_train, Y_train)
     #nbc.predict(X_test)
-    # print(nbc.score(X_test, Y_test, model = 'nbc.model'))
+    print(nbc.score(X_test, Y_test, model = 'nbc.model'))
