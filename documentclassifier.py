@@ -88,6 +88,6 @@ if __name__ == "__main__" :
     X_test, Y_test = df_test['mail'].tolist(), df_test['label'].tolist()
 
     nbc = NaiveBayesClassifier()
-    # nbc.train(X_train, Y_train)
+    nbc.train(X_train, Y_train)
     #nbc.predict(X_test)
-    print(nbc.score(X_test, Y_test, model = 'nbc.model'))
+    # print(nbc.score(X_test, Y_test, model = 'nbc.model'))
