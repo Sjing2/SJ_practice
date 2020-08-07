@@ -1,10 +1,9 @@
-# Document Classifier
 import os
 import numpy as np
 import pandas as pd
 import pickle
 
-os.chdir("C:\\Users\\student\\sojeongs2\\SJ_practice\\Sjing_NLP")
+os.chdir("C:\\Users\\student\\SJ_practice")
 
 # Document Classifier
 class NaiveBayesClassifier() :
@@ -59,17 +58,20 @@ class NaiveBayesClassifier() :
                 self.nbc_dic = tmp['nbc_dic']
                 self.i2label = tmp['i2label']
                 self.label2i = tmp['label2i']
+
         tokenized_docs = self._tokenize(docs)
         results = []
 
         #라벨별 확률
         for d in tokenized_docs :
             prob_for_label = np.zeros(len(self.label2i))
+
             for w in d :
                 for label, i in self.label2i.items() :
                     prob_for_label[i] += self.nbc_dic[w]['log_prob'][i]
             tmp = np.exp(prob_for_label + self.label_prob)
             prob = tmp / tmp.sum()
+
             results.append(self.i2label[prob.argsort()[::-1][0]])
         return results
 
