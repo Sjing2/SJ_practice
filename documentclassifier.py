@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
-os.chdir("C:\\Users\\student\\SJ_practice")
+os.chdir("C:\\Users\\sojeo\\OneDrive\\바탕 화면\\SJ_practice")
 
 # Document Classifier
 class NaiveBayesClassifier() :
