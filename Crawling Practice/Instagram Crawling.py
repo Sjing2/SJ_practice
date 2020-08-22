@@ -3,7 +3,7 @@
 
 # !python --version
 
-pwd
+# pwd
 
 import pandas as pd
 import numpy as np
