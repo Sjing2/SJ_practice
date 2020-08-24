@@ -14,8 +14,8 @@ class RelationSpider(scrapy.Spider):
     name = 'relation'
 
     # 팔로워와 팔로우 목록을 추출할 user 정보(username, id)
-    user_name = 'park_chan_0_0'
-    user_id = '2056152256'
+    user_name = '박민수 프로 kpba.859'
+    user_id = '1983212617'
 
     # 팔로워와 팔로우 목록을 추출하기 위해 로그인 작업 먼저 수행
     def start_requests(self):
@@ -45,8 +45,8 @@ class RelationSpider(scrapy.Spider):
 
         # 로그인 위해서 필요한 username과 password(인코딩 된 패스워드)
         str_time = str(int(time.time()))
-        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + 'ska22055233'
-        login_data = {'username': 'hnamgoisunn', 'enc_password': PASSWORD}
+        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + '#nayana310'
+        login_data = {'username': 'szing_e', 'enc_password': PASSWORD}
 
         # 로그인 request
         yield scrapy.FormRequest(login_url, method='POST', formdata = login_data, headers=header, callback=self.check_login)
