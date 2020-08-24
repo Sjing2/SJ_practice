@@ -10,3 +10,5 @@ import requests
 # hashtag(포스트 내 해시태그), region_tag(포스트의 장소태그), tagged(태그된 사람의 인스타 아이디), like_count(수집시 좋아요 수),
 # view_count(수집시 조회수), crawling_time(수집시간), team_idx(팀 번호)
 
+class PostSpider(scrapy.Spider):
+    
