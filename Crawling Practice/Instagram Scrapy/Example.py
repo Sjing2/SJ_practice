@@ -14,8 +14,8 @@ class RelationSpider(scrapy.Spider):
     name = 'relation'
 
     # 팔로워와 팔로우 목록을 추출할 user 정보(username, id)
-    user_name = '박민수 프로 kpba.859'
-    user_id = '1983212617'
+    user_name = 'park_chan_0_0'
+    user_id = '2056152256'
 
     # 팔로워와 팔로우 목록을 추출하기 위해 로그인 작업 먼저 수행
     def start_requests(self):
