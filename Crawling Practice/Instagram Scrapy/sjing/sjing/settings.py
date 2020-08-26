@@ -11,6 +11,7 @@ BOT_NAME = 'sjing'
 
 SPIDER_MODULES = ['sjing.spiders']
 NEWSPIDER_MODULE = 'sjing.spiders'
+DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"

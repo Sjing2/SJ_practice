@@ -19,7 +19,11 @@ class Relation(scrapy.Spider):
     name = 'relation_spider_1'
 
     # 첫 기준 id(epoch 1)
-    user_id = '2094752163' # mumumu_yj
+    # 수도권: user_id = '2094752163' # mumumu_yj
+    # 충청:
+    #########################################################
+    user_id = '13580068590' # seni._.sen._.sen
+    #########################################################
 
     start_end_lst = []
     header = {}
@@ -52,8 +56,8 @@ class Relation(scrapy.Spider):
         Relation.header['handle_httpstatus_all'] = True
         # 로그인 위해서 필요한 username과 password(인코딩 된 패스워드)
         str_time = str(int(time.time()))
-        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + 'ska22055233'
-        Relation.login_data = {'username': 'tagram_1992', 'enc_password': PASSWORD}
+        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + '#nayana310'
+        Relation.login_data = {'username': 'szing_e', 'enc_password': PASSWORD}
 
         # 로그인 request
         yield scrapy.FormRequest(Relation.login_url, method='POST', formdata = Relation.login_data, headers=Relation.header, callback=self.start_epoch)
@@ -147,13 +151,14 @@ class Relation2(scrapy.Spider):
 
     # 팔로워와 팔로우 목록을 추출할 user 정보(username, id)
 
+    ########################################################
     # epoch 1로 뽑아낸 id 리스트 활용
     try:
-        df = pd.read_csv('sd_1.csv')
+        df = pd.read_csv('cc_1.csv')
         user_id_lst = list(map(str, list(np.unique(df))))
     except:
         user_id_lst = []
-   
+   ##########################################################
 
     start_end_lst = []
     header = {}
@@ -187,8 +192,8 @@ class Relation2(scrapy.Spider):
         Relation2.header['handle_httpstatus_all'] = True
         # 로그인 위해서 필요한 username과 password(인코딩 된 패스워드)
         str_time = str(int(time.time()))
-        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + 'ska22055233'
-        Relation2.login_data = {'username': 'tagram_1992', 'enc_password': PASSWORD}
+        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + '#nayana310'
+        Relation2.login_data = {'username': 'szing_e', 'enc_password': PASSWORD}
 
         # 로그인 request
         yield scrapy.FormRequest(Relation2.login_url, method='POST', formdata = Relation2.login_data, headers=Relation2.header, callback=self.start_epoch)
@@ -221,7 +226,9 @@ class Relation2(scrapy.Spider):
             print('over 1000!')
             Relation2.over1000_lst.append(user_id)
             df_over1000 = pd.DataFrame(data = list(set(Relation2.over1000_lst)), columns = ['data'])
-            df_over1000.to_csv(r'D:\git\local\sd_over1000.csv')
+            ###################################################
+            df_over1000.to_csv(r'C:\Users\sojeo\SJ_practice\Crawling Practice\Instagram Scrapy\cc_over1000.csv')
+            ###################################################
             return
         # follower_lst 추출
         follower_lst = follower_json['data']['user']['edge_followed_by']['edges']
