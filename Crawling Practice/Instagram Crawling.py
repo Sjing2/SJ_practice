@@ -26,7 +26,7 @@ keywords[0]
 
 ## 크롬창 띄우기
 driver = webdriver.Chrome("chromedriver.exe")  ## 크롬 드라이버 로드
-driver.get("https://www.instagram.com/explore/tags/%EB%B0%A9%ED%96%A5%EC%A0%9C/?hl=ko")  # "#차량용방향제" 검색
+driver.get("https://www.instagram.com/explore/tags/%EB%B0%A9%ED%96%A5%EC%A0%9C/?hl=ko")  # "#강아지" 검색
 time.sleep(5)
 
 for keyword in keywords:
