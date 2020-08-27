@@ -20,7 +20,7 @@ class Relation(scrapy.Spider):
 
     # 첫 기준 id(epoch 1)
     # 수도권: user_id = '2094752163' # mumumu_yj
-    # 충청:
+    # 충청: 
     #########################################################
     user_id = '13580068590' # seni._.sen._.sen
     #########################################################
@@ -56,8 +56,8 @@ class Relation(scrapy.Spider):
         Relation.header['handle_httpstatus_all'] = True
         # 로그인 위해서 필요한 username과 password(인코딩 된 패스워드)
         str_time = str(int(time.time()))
-        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + '#nayana310'
-        Relation.login_data = {'username': 'szing_e', 'enc_password': PASSWORD}
+        PASSWORD = '#PWD_INSTAGRAM_BROWSER:0:' + str_time + ':' + 'ska22055233'
+        Relation.login_data = {'username': 'tagram_1992', 'enc_password': PASSWORD}
 
         # 로그인 request
         yield scrapy.FormRequest(Relation.login_url, method='POST', formdata = Relation.login_data, headers=Relation.header, callback=self.start_epoch)
@@ -236,7 +236,7 @@ class Relation2(scrapy.Spider):
         for follower in follower_lst:
             if not follower['node']['is_private']:
                 Relation2.start_end_lst.append([follower['node']['id'], user_id])
-                if len(Relation2.start_end_lst) == 100:
+                if len(Relation2.start_end_lst) >= 100:
                     follow_url = 'https://www.instagram.com/graphql/query/?query_hash=d04b0a864b4b54837c0d870b0e77e076&variables=%7B%22id%22%3A%22{}%22%2C%22first%22%3A24%7D'.format(user_id)
                     yield scrapy.Request(follow_url, callback=self.parse_follow, meta = {'user_id' : user_id})
             # 비공개 아이디는 어차피 필요없는 정보이기 때문에 제외하고 크롤링
@@ -272,7 +272,7 @@ class Relation2(scrapy.Spider):
         for follow in follow_lst:
             if not follow['node']['is_private']:
                 Relation2.start_end_lst.append([user_id, follow['node']['id']])
-                if len(Relation.start_end_lst) == 200:
+                if len(Relation2.start_end_lst) >= 200:
                     for start, end in Relation2.start_end_lst:
                         time.sleep(0.5)
                         yield {
@@ -302,3 +302,4 @@ class Relation2(scrapy.Spider):
                     'end' : end
                     }
             return
+        
