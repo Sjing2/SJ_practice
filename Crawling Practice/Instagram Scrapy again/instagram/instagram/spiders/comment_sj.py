@@ -41,7 +41,7 @@ class Comment_Spider(scrapy.Spider):
                 hashtag.append(reply)
             else:
                 pass
-
+        return
         
 
         #     # 추출할 정보 목록
