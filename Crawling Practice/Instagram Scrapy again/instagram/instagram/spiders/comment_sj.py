@@ -3,6 +3,7 @@ import re
 import time
 import json
 import requests
+import datetime
 
 # 댓글 정보 : inner_id(내구고유ID), reply(댓글 내용),
 # hashtag(해시태그, 복수의 경우 콤마로 구분), reply_time(댓글 달린 시간),
