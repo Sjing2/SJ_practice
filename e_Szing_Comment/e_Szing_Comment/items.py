@@ -9,6 +9,8 @@ class InstagramCrawlingItem(scrapy.Item):
     shortcode = scrapy.Field()
     end_cursor = scrapy.Field()
     image_url = scrapy.Field()
+    username = scrapy.Field()
+    created_at = scrapy.Field()
 
 class UserProfSpiderItem(scrapy.Item):
     user_name = scrapy.Field()

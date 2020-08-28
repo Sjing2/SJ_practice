@@ -15,8 +15,8 @@ class Comment_Spider_1(scrapy.Spider):
     name = 'comment_1'
 
     # # user 정보(username, id)
-    center_user_name = 'gemma_vvv' #seni._.sen._.sen
-    inner_id = '1657185979' #13580068590
+    center_user_name = 'seni._.sen._.sen'
+    inner_id = '13580068590'
 
     def start_requests(self):
         start_urls = 'https://www.instagram.com/graphql/query/?query_hash=bfa387b2992c3a52dcbe447467b4b771&variables=%7B%22id%22%3A%22{}%22%2C%22first%22%3A12%7D'.format(Comment_Spider_1.inner_id)
@@ -38,7 +38,7 @@ class Comment_Spider_2(scrapy.Spider):
     name = 'comment_2'
 
     # try:
-    #     df = pd.read_csv('shortcode_comment_test_1.csv')
+    #     df = pd.read_csv('shortcode_test.csv')
     #     shortcode_lst = list(map(str, list(np.unique(df))))
     # except:
     #     shortcode_lst = []
@@ -46,7 +46,7 @@ class Comment_Spider_2(scrapy.Spider):
     url_format = 'https://www.instagram.com/graphql/query/?query_hash=bc3296d1ce80a24b1b6e40b1e72903f5&variables=%7B%22shortcode%22%3A%22{0}%22%2C%22first%22%3A12%7D'
     
     def __init__(self):
-        post_data = pd.read_csv(r"C:\Users\sojeo\SJ_practice\e_Szing_Comment\shortcode_comment_test_1.csv", encoding="utf-8") 
+        post_data = pd.read_csv(r"C:\Users\sojeo\SJ_practice\e_Szing_Comment\shortcode_test_1.csv", encoding="utf-8") 
         self.shortcode_list = post_data['shortcode'].tolist()
         self.shortcode_count = 0
 
@@ -63,13 +63,7 @@ class Comment_Spider_2(scrapy.Spider):
             item['username'] = data['node']['owner']['username']
             item['created_at'] = datetime.datetime.fromtimestamp(int(data['node']['created_at'])).strftime('%Y-%m-%d %H:%M:%S')
             item['shortcode'] = self.shortcode_list[self.shortcode_count]
-            
-            hashtag = []
-            for reply in item['tag']:
-                if '#' in reply:
-                    hashtag.append(reply)
-                else:
-                    pass
+
             yield item
 
             if int(data['node']['edge_threaded_comments']['count']) > 0:

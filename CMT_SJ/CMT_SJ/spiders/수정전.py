@@ -73,11 +73,11 @@ class Comment_Spider_1(scrapy.Spider):
 #             reply = re.sub('(#.+)', '', reply) # 공백제거 처리도 해주면 좋을듯
 #             reply = re.sub('\n', '', reply)
 
-#             hashtag = []
-#             if '#' in reply:
-#                 hashtag.append(reply)
-#             else:
-#                 pass
+            hashtag = []
+            if '#' in reply:
+                hashtag.append(reply)
+            else:
+                pass
 
 #             yield {'shortcode' : shortcode,
 #                     'inner_id' : Comment_Spider.inner_id,
