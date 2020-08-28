@@ -2,15 +2,14 @@ import scrapy
 
 
 class InstagramCrawlingItem(scrapy.Item):
-    innerid = scrapy.Field()
-    date = scrapy.Field()
-    tags = scrapy.Field()
-    text = scrapy.Field()
+    username = scrapy.Field()
+    inner_id = scrapy.Field()
+    reply = scrapy.Field()
+    hashtag = scrapy.Field()
+    reply_time = scrapy.Field()
     shortcode = scrapy.Field()
     end_cursor = scrapy.Field()
-    image_url = scrapy.Field()
-    username = scrapy.Field()
-    created_at = scrapy.Field()
+
 
 class UserProfSpiderItem(scrapy.Item):
     user_name = scrapy.Field()
