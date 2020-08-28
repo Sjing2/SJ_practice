@@ -5,7 +5,7 @@ import re
 import datetime
 import pandas as pd
 
-shortcode_data = pd.read_csv('/Users/gyumyung/Documents/post_id.csv')
+shortcode_data = pd.read_csv('C:\Users\sojeo\SJ_practice\IU_SJ_Instagram\IU_SJ_Instagram\post_id.csv')
 shortcode_list = shortcode_data['shortcode'].tolist()
 
 class Reply_Spider(scrapy.Spider):
