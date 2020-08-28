@@ -1,3 +1,9 @@
+# Setting에서 건드릴 것
+# USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
+# ROBOTSTXT_OBEY = False
+# COOKIES_ENABLED = True
+# DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
+
 import scrapy
 import re
 import time
@@ -5,14 +11,14 @@ import json
 import requests
 import datetime
 import pandas as pd
-from e_Szing_Comment.items import InstagramCrawlingItem
+from IU_SJ_Instagram.items import InstagramCrawlingItem
 
 # 댓글 정보 : inner_id(내구고유ID), reply(댓글 내용),
 # hashtag(해시태그, 복수의 경우 콤마로 구분), reply_time(댓글 달린 시간),
 # shortcode(댓글이 달린 포스트의 shortcode)
 
 class Comment_Spider_1(scrapy.Spider):
-    name = 'comment_1'
+    name = 'comment_01'
 
     # # user 정보(username, id)
     center_user_name = 'dlwlrma' #seni._.sen._.sen, gemma_vvv
@@ -35,7 +41,7 @@ class Comment_Spider_1(scrapy.Spider):
         return
 
 class Comment_Spider_2(scrapy.Spider):
-    name = 'comment_2'
+    name = 'comment_02'
 
     # try:
     #     df = pd.read_csv('shortcode_comment_test_1.csv')
@@ -46,7 +52,7 @@ class Comment_Spider_2(scrapy.Spider):
     url_format = 'https://www.instagram.com/graphql/query/?query_hash=bc3296d1ce80a24b1b6e40b1e72903f5&variables=%7B%22shortcode%22%3A%22{0}%22%2C%22first%22%3A12%7D'
     
     def __init__(self):
-        post_data = pd.read_csv(r"C:\Users\sojeo\SJ_practice\e_Szing_Comment\IU_test_1.csv", encoding="utf-8") 
+        post_data = pd.read_csv(r"C:\Users\sojeo\SJ_practice\IU_SJ_Instagram\IU_test_1.csv", encoding="utf-8") 
         self.shortcode_list = post_data['shortcode'].tolist()
         self.shortcode_count = 0
 
@@ -63,13 +69,6 @@ class Comment_Spider_2(scrapy.Spider):
             item['username'] = data['node']['owner']['username']
             item['created_at'] = datetime.datetime.fromtimestamp(int(data['node']['created_at'])).strftime('%Y-%m-%d %H:%M:%S')
             item['shortcode'] = self.shortcode_list[self.shortcode_count]
-            
-            hashtag = []
-            for reply in item['tag']:
-                if '#' in reply:
-                    hashtag.append(reply)
-                else:
-                    pass
             yield item
 
             if int(data['node']['edge_threaded_comments']['count']) > 0:
@@ -86,3 +85,10 @@ class Comment_Spider_2(scrapy.Spider):
             yield scrapy.Request('https://www.instagram.com/graphql/query/?query_hash=bc3296d1ce80a24b1b6e40b1e72903f5&variables={"shortcode":"' + self.shortcode + '","first":12'+',"after":"'+end_cursor+'"}', callback=self.parse)
         else:
             self.shortcode_count += 1
+
+        hashtag = []
+        for reply in item['text']:
+            if '#' in reply:
+                hashtag.append(reply)
+            else:
+                pass
