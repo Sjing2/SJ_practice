@@ -5,8 +5,11 @@ import re
 import datetime
 import pandas as pd
 
+# csv파일 경로 설정 및 숏코드 컬럼명 설정
+# ====================================================================
 shortcode_data = pd.read_csv('C:\Users\sojeo\SJ_practice\IU_SJ_Instagram\IU_SJ_Instagram\post_id.csv')
 shortcode_list = shortcode_data['shortcode'].tolist()
+# ====================================================================
 
 class Reply_Spider(scrapy.Spider):
     name = "reply"
@@ -19,6 +22,13 @@ class Reply_Spider(scrapy.Spider):
     def get_reply(self, response):
         graphql = response.json()
         edges = graphql['data']['shortcode_media']['edge_media_to_parent_comment']['edges']
+
+        # 숏코드 가져오기
+        response_data = str(response)
+        try:
+            shortcode = re.search('(?<=shortcode%22%3A%22).*(?=%22%2C%22first%22)', response_data).group()
+        except:
+            shortcode = re.search('(?<=shortcode%22:%22).*(?=%22,%22first%22)', response_data).group()
 
         # 댓글 정보 가져오기
         for edge in edges:
@@ -40,14 +50,14 @@ class Reply_Spider(scrapy.Spider):
                         'reply': node,
                         'hashtag': hashtag_result,
                         'reply_time': post_date,
-                        # 'shortcode': Reply_Spider.shortcode
+                        'shortcode': shortcode
                         }
             else:
                 yield {'inner_id':reply_id,
                         'reply': node,
                         'hashtag': '',
                         'reply_time': post_date,
-                        # 'shortcode': Reply_Spider.shortcode
+                        'shortcode': shortcode
                         }
 
             # 대댓글 정보 가져오기
@@ -71,24 +81,24 @@ class Reply_Spider(scrapy.Spider):
                                 'reply': re_node,
                                 'hashtag': re_hashtag_result,
                                 'reply_time': re_post_date,
-                                # 'shortcode': Reply_Spider.shortcode
+                                'shortcode': shortcode
                                 }
                     else:
                         yield {'inner_id':re_id,
                                 'reply': re_node,
                                 'hashtag': '',
                                 'reply_time': re_post_date,
-                                # 'shortcode': Reply_Spider.shortcode
+                                'shortcode': shortcode
                                 }       
 
         # end_cursor 추출
-        # try:
-        #     end_cursor = graphql['data']['shortcode_media']['edge_media_to_parent_comment']['page_info']['end_cursor']
-        #     print('end_cursor :', end_cursor)
-        # except:
-        #     end_cursor = None
+        try:
+            end_cursor = graphql['data']['shortcode_media']['edge_media_to_parent_comment']['page_info']['end_cursor']
+            print('end_cursor :', end_cursor)
+        except:
+            end_cursor = None
         
-        # if end_cursor:
-        #     time.sleep(1)
-            # next_page = 'https://www.instagram.com/graphql/query/?query_hash=bc3296d1ce80a24b1b6e40b1e72903f5&variables={"shortcode":"' + Reply_Spider.shortcode + '","first":12'+',"after":"'+end_cursor+'"}'
-            # yield scrapy.Request(next_page, callback=self.get_reply)
+        if end_cursor:
+            time.sleep(1)
+            next_page = 'https://www.instagram.com/graphql/query/?query_hash=bc3296d1ce80a24b1b6e40b1e72903f5&variables={"shortcode":"' + shortcode + '","first":12'+',"after":"'+end_cursor+'"}'
+            yield scrapy.Request(next_page, callback=self.get_reply)
