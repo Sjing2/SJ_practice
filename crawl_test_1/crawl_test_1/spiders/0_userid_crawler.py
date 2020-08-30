@@ -1,4 +1,5 @@
 # 크롤링 순서 0. 유저 아이디 크롤링 -> 1. post -> 2. porfile -> 3. post -> 4. reply
+# 현재 reply_crawler 코드 오류로 삭제함 다시 추가할 필요가 있음
 
 import scrapy
 import re
