@@ -23,7 +23,7 @@ class ProfileSpider(scrapy.Spider):
         user_id_lst = self.user_id_lst
         for idx, user_id in enumerate(user_id_lst):
             if idx % 20 == 1:
-                time.sleep(20)
+                time.sleep(300)
             header = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X) AppleWebKit/603.3.8 (KHTML, like Gecko) Mobile/14G60 Instagram 12.0.0.16.90 (iPhone9,4; iOS 10_3_3; en_US; en-US; scale=2.61; gamut=wide; 1080x1920)',
             'X-Requested-With': 'XMLHttpRequest'}
