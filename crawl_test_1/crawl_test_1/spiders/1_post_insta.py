@@ -1,5 +1,7 @@
 # 첫번째 페이지 --> https://www.instagram.com/graphql/query/?query_hash=bfa387b2992c3a52dcbe447467b4b771&variables=%7B%22id%22%3A%221437038730%22%2C%22first%22%3A24%7D
 
+import pandas as pd
+import numpy as np
 import scrapy
 import json
 import time
