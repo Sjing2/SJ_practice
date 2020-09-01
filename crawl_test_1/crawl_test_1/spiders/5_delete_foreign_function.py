@@ -26,3 +26,5 @@ new_df = del_foreign(df)
 
 id_lst = list(set(new_df['insta_id']))
 len(id_lst)
+
+new_df.to_csv(r'C:\Users\sojeo\SJ_practice\crawl_test_1\crawl_test_1\cc_region_2.csv', index=False)
