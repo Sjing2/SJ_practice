@@ -2,7 +2,7 @@ import re
 import pandas as pd
 import os
 
-os.chdir('C:\Users\sojeo\SJ_practice\crawl_test_1\crawl_test_1')
+os.chdir(r'C:\Users\sojeo\SJ_practice\crawl_test_1\crawl_test_1')
 df = pd.read_csv('cc_region.csv')
 
 id_lst = list(set(df['insta_id']))
