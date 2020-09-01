@@ -11,8 +11,8 @@ class Reply_Spider(scrapy.Spider):
 
     # csv파일 경로 설정 및 숏코드 컬럼명 설정
     # ====================================================================
-    shortcode_data = pd.read_csv('/Users/gyumyung/Documents/post_id.csv')
-    shortcode_list = shortcode_data['shortcode'].tolist()
+    # shortcode_data = pd.read_csv('/Users/gyumyung/Documents/post_id.csv')
+    # shortcode_list = shortcode_data['shortcode'].tolist()
     # ====================================================================
 
     def start_requests(self):
