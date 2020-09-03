@@ -7,6 +7,7 @@ import re
 import datetime
 import pandas as pd
 import numpy as np
+from datetime import date
 
 # region정보가 있는 user_id의 post정보 가져오기(2번째 페이지부터)
 # profile정보를 통해 추린 user_id목록에 매칭되는 next_page를 start_url로 사용
@@ -16,8 +17,8 @@ class Post_Spider(scrapy.Spider):
 
     def __init__(self):
         try:
-            id_file = input("id 파일명(경로 포함)을 입력해 주세요(ex. D:\Scrapy\insta_crawling\insta_crawling\jl_1.csv)\n")
-            self.df = pd.read_csv(r"{}".format(id_file))
+            # id_file = input("id 파일명(경로 포함)을 입력해 주세요(ex. D:\Scrapy\insta_crawling\insta_crawling\jl_1.csv)\n")
+            self.df = pd.read_csv('/home/lab19/sjing_e/SJ_practice/crawl_test_1/crawl_test_1/cc_word.csv')
             self.inner_id_ls = list(map(str, list(np.unique(self.df['inner_id']))))
         except:
             print("id_file_error!")
