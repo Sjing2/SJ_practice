@@ -10,7 +10,7 @@ import datetime
 
 #### 로그인 과정은 필요없고, start_url에 center_id만 넣어주면 해당 id의 모든 post정보 크롤링 가능 ####
 class Post_Spider(scrapy.Spider):
-    name = "post"
+    name = "post_1"
 
     # center_user_name = 'dadadajin_'
     ###################################################################################
@@ -112,7 +112,7 @@ class Post_Spider(scrapy.Spider):
 
 class Region_Spider(scrapy.Spider):
 
-    name = "region"
+    name = "region_1"
     
     def __init__(self):
         try:
