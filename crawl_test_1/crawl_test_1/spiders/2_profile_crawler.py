@@ -11,8 +11,8 @@ class ProfileSpider(scrapy.Spider):
 
     def __init__(self):
         try:
-            id_file = input('id 파일명(경로 포함)을 입력해 주세요(ex. D:\Scrapy\insta_crawling\insta_crawling\jl_1.csv)\n')
-            df = pd.read_csv(r'{}'.format(id_file))
+            # id_file = input('id 파일명(경로 포함)을 입력해 주세요(ex. D:\Scrapy\insta_crawling\insta_crawling\jl_1.csv)\n')
+            # df = pd.read_csv(r'{}'.format(id_file))
             self.user_id_lst = list(map(str, list(np.unique(df))))
         except:
             print('id_file_error!')

@@ -1,0 +1,9 @@
+2020-09-03 16:06:48 [scrapy.utils.log] INFO: Scrapy 2.3.0 started (bot: crawl_test_1)
+2020-09-03 16:06:48 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.9, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 20.3.0, Python 3.7.7 (default, Mar 26 2020, 15:48:22) - [GCC 7.3.0], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.8, Platform Linux-4.4.0-1112-aws-x86_64-with-debian-stretch-sid
+2020-09-03 16:06:48 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.epollreactor.EPollReactor
+2020-09-03 16:08:37 [scrapy.utils.log] INFO: Scrapy 2.3.0 started (bot: crawl_test_1)
+2020-09-03 16:08:37 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.9, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 20.3.0, Python 3.7.7 (default, Mar 26 2020, 15:48:22) - [GCC 7.3.0], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.8, Platform Linux-4.4.0-1112-aws-x86_64-with-debian-stretch-sid
+2020-09-03 16:08:37 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.epollreactor.EPollReactor
+2020-09-03 16:12:12 [scrapy.utils.log] INFO: Scrapy 2.3.0 started (bot: crawl_test_1)
+2020-09-03 16:12:12 [scrapy.utils.log] INFO: Versions: lxml 4.5.0.0, libxml2 2.9.9, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 20.3.0, Python 3.7.7 (default, Mar 26 2020, 15:48:22) - [GCC 7.3.0], pyOpenSSL 19.1.0 (OpenSSL 1.1.1g  21 Apr 2020), cryptography 2.8, Platform Linux-4.4.0-1112-aws-x86_64-with-debian-stretch-sid
+2020-09-03 16:12:12 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.epollreactor.EPollReactor
