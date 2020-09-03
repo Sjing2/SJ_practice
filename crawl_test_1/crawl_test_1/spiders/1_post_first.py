@@ -23,9 +23,9 @@ class Post_Spider(scrapy.Spider):
         except:
             print("id_file_error!")
             self.inner_id_ls = []
-        self.starttime = time.time()
-        self.request_count = 0
-        self.id2npage = {}
+            self.starttime = time.time()
+            self.request_count = 0
+            self.id2npage = {}
     
         df_dropna = self.df.dropna(subset=['next_page'])
         id_ls = list(map(str, df_dropna['inner_id']))
