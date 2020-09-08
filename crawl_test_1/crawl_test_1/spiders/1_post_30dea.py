@@ -16,8 +16,8 @@ class Post_Spider(scrapy.Spider):
 
     def __init__(self):
         try:
-            id_file = input("id 파일명(경로 포함)을 입력해 주세요(ex. D:\Scrapy\insta_crawling\insta_crawling\jl_1.csv)\n")
-            self.df = pd.read_csv(r"{}".format(id_file))
+            # id_file = input("id 파일명(경로 포함)을 입력해 주세요(ex. D:\Scrapy\insta_crawling\insta_crawling\jl_1.csv)\n")
+            self.df = pd.read_csv(r"C:\Users\sojeo\SJ_practice\crawl_test_1\crawl_test_1\30dae_4500id.csv")
             self.inner_id_ls = list(map(str, list(np.unique(self.df['inner_id']))))
         except:
             print("id_file_error!")
